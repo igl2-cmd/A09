@@ -1,5 +1,9 @@
 :root {
     --accent-color: #800000;
+    /* Step 11: Add variables for menu colors */
+    --menu-light: white;
+    --menu-mid: antiquewhite;
+    --menu-dark: black;
 }
 
 * {
@@ -8,16 +12,14 @@
     box-sizing: border-box;
 }
 
-/* Step 16: Enhance the body element for fluid layout */
 body {
-    width: 80%;               /* Set width to 80% */
-    max-width: 1024px;        /* Set maximum width */
-    margin: auto;             /* Center the body container (already correct) */
+    width: 80%;
+    max-width: 1024px;
+    margin: auto;
     border: 2px solid var(--accent-color);
     font-family: Arial, Helvetica, sans-serif;
-    /* Adjusted font-size and added line-height */
-    font-size: 90% + .2vw;    /* Scalable font-size based on viewport width */
-    line-height: 1.5;         /* Set line height */
+    font-size: 90% + .2vw;
+    line-height: 1.5;
 }
 
 a:focus, a:hover {
@@ -25,10 +27,9 @@ a:focus, a:hover {
     color: var(--accent-color);
 }
 
-/* Step 16: Adjust padding for various elements from .5em to .25em */
 h1, h2, h3, h4, h5, h6, p, ul {
-    padding-top: .25em;    /* Changed from .5em */
-    padding-bottom: .25em; /* Changed from .5em */
+    padding-top: .25em;
+    padding-bottom: .25em;
 }
 
 ul {
@@ -48,11 +49,10 @@ h3 {
     font-size: 105%;
 }
 
-/* Step 16: Adjust line-height in the <header> */
 header {
     border-bottom: 2px solid var(--accent-color);
     background-image: linear-gradient(30deg, #f6bb73 0%, white 30%, white 65%, #f6bb73 100%);
-    line-height: 1.2; /* Set line height to 1.2 */
+    line-height: 1.2;
 }
 
 header h2 {
@@ -66,11 +66,10 @@ header h3 {
     padding-bottom: 1em;
 }
 
-/* Step 17: Logo image scaling (min 40px, max 80px) */
 header img {
     float: left;
     margin: .75em 1em;
-    width: 100%; /* Allows scaling between min/max */
+    width: 100%;
     min-width: 40px;
     max-width: 80px;
 }
@@ -78,36 +77,24 @@ header img {
 /* Step 9: Enhance the style rule for the <main> element */
 main {
     clear: left;
-    /* Removed padding-right/left/bottom to let flex children manage spacing */
-    padding-bottom: 1em; 
-    
-    /* ADD FLEXBOX */
-    display: flex; 
-    flex-direction: row; /* Default, but explicit */
+    padding-bottom: 1em;
+    display: flex;
+    flex-direction: row;
 }
 
-/* Step 13: DELETE the redundant main h1 rule, as it's moved to .featured */
-/* main h1 {
- * border-top: 2px solid var(--accent-color);
- * border-bottom: 2px solid var(--accent-color);
- * }
- */
-
-
-/* Step 10 & 11: Add style rules for <aside> and <section> */
+/* Flexbox column sizes (Chapter 6) */
 aside {
-    flex-basis: 25%; /* <aside> takes up 25% */
-    padding: 1em 10px 1em 0; /* Adjusted padding for spacing */
+    flex-basis: 25%;
+    padding: 1em 10px 1em 0;
 }
 
 section {
-    flex-basis: 75%; /* <section> takes up 75% */
-    padding: 1em 0 1em 10px; /* Adjusted padding for spacing */
-    border-left: 1px solid #ccc; /* Optional visual separator */
+    flex-basis: 75%;
+    padding: 1em 0 1em 10px;
+    border-left: 1px solid #ccc;
 }
 
-/* Step 12 & 13: Style rule for the <article class="featured"> */
-/* Copied border properties from the old 'main h1' rule */
+/* Featured article styling (Chapter 6) */
 .featured {
     border-top: 2px solid var(--accent-color);
     border-bottom: 2px solid var(--accent-color);
@@ -115,33 +102,25 @@ section {
     margin-bottom: 1em;
 }
 
-/* Step 14: Nested style rule for <img> element within the <section> */
-/* This targets the featured speaker image */
 section article img {
     float: right;
-    margin: 0 0 10px 15px; /* Added spacing around the floated image */
+    margin: 0 0 10px 15px;
 }
 
-/* Step 17: Featured speaker image scaling (min 100px, max 250px) */
 section article img {
-    width: 60%; /* Adjusted from 100% to ensure scaling is visible */
+    width: 60%;
     min-width: 100px;
     max-width: 250px;
 }
 
-
-/* Step 17: Guest speaker images (in the <aside>): min 40px, max 75px */
-/* This targets all <img> elements inside the <aside> */
 aside img {
-    border: 4px double var(--accent-color); /* Kept existing image styling */
+    border: 4px double var(--accent-color);
     border-radius: 10px;
-    
-    width: 80%; /* Adjusted from 100% to ensure scaling is visible */
+    width: 80%;
     min-width: 40px;
     max-width: 75px;
 }
 
-/* Re-apply basic image styling to all images (was applied to main img) */
 main img {
     border: 4px double var(--accent-color);
     border-radius: 10px;
@@ -164,3 +143,93 @@ footer p {
     padding-bottom: 1em;
 }
 
+/* --- Chapter 7: Navigation Menu CSS --- */
+
+/* Step 12: Add style rule for the navbar class */
+.navbar {
+    background-color: var(--accent-color);
+}
+
+/* Step 8: Style rule for the menu class (Flexbox) */
+.menu {
+    /* Step 12: Remove bullets, margins, and padding */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    /* Flexbox for horizontal display and wrapping */
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on small screens */
+}
+
+/* Step 9 & 15: Nested style rule for <li> element */
+.menu > li {
+    flex-basis: 20%; /* Each item takes 20% width */
+    text-align: center; /* Step 15: Center the text in the menu items */
+}
+
+/* Step 12 & 14: Nested style rule for <a> element */
+.navbar a {
+    /* Step 12: General styling */
+    display: block; /* Display as block for padding/height */
+    padding: 1em;
+    text-decoration: none; /* Remove underline */
+    color: var(--menu-light); /* Set text color to light menu color */
+
+    /* Step 14: Add margin for space around menu items */
+    margin: 0 1px 2px; /* top: 0, left/right: 1px, bottom: 2px */
+}
+
+/* Step 19: Remove extra space from the left and right sides */
+.menu > li:first-child a { 
+    margin-left: 0; 
+}
+.menu > li:last-child a { 
+    margin-right: 0; 
+}
+
+/* Step 12: :hover, :focus, and .current pseudo-classes */
+.navbar a:hover,
+.navbar a:focus,
+.navbar .current {
+    background-color: var(--menu-mid); /* Set background to mid color */
+    color: var(--menu-dark); /* Set text color to dark menu color */
+}
+
+/* --- Submenu CSS --- */
+
+/* Step 5: Style rule for menu item containing the submenu */
+.has-submenu {
+    position: relative; /* Set position to relative */
+}
+
+/* Step 6: Nested style rule for <small> element */
+.has-submenu small {
+    margin-left: .5em; /* Add space between link text and symbol */
+}
+
+/* Step 9 & 10: Style rule for the submenu class */
+.submenu {
+    position: absolute; /* Set position to absolute */
+    left: 0; /* Set left to 0 */
+    right: 0; /* Set right to 0 */
+    
+    /* Step 11 & 12: Set colors */
+    background-color: var(--accent-color);
+    color: var(--menu-light);
+    
+    /* Step 13: Hide the submenu initially */
+    display: none;
+    
+    z-index: 100; /* Ensure submenu displays over other content */
+}
+
+/* Step 7 & 8: Rule to display submenu on hover */
+.has-submenu:hover > .submenu {
+    display: block; /* Show submenu when parent li is hovered */
+}
+
+/* Step 18: Match submenu item borders/margins to main menu items */
+.submenu > li a {
+    margin: 0 2px 2px; /* top: 0, left/right: 2px, bottom: 2px */
+}
